@@ -10,6 +10,7 @@ contract TestToken is Token {
         owner = 0x0; // lose ownership
     }
 
-    // add the property
-
+    function echidna_disallow_unpause() public view returns(bool) {
+      return is_paused;
+    }
 }

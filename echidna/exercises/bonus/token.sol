@@ -5,7 +5,7 @@ contract Ownership{
 
     address owner = msg.sender;
 
-    function Owner(){
+    function Owner() isOwner{
         owner = msg.sender;
     }
 
@@ -38,7 +38,9 @@ contract Token is Pausable{
     mapping(address => uint) public balances;
 
     function transfer(address to, uint value) ifNotPaused public{
+      if(balances[to] + value <= 10000) {
         balances[msg.sender] -= value;
         balances[to] += value;
+      }
     }
 }
